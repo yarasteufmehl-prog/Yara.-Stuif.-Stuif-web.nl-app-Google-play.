@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Volume2, Type, Search, Eye, Share2 } from 'lucide-react';
+import { Sparkles, Volume2, Type, Search, Eye, Share2, Download } from 'lucide-react';
 import { NavTab, SubView } from '../types';
 
 interface HeaderProps {
@@ -13,6 +13,7 @@ interface HeaderProps {
   onChangeFontSize: () => void;
   searchOpen: boolean;
   onToggleSearch: () => void;
+  onOpenInstall?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -26,6 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
   onChangeFontSize,
   searchOpen,
   onToggleSearch,
+  onOpenInstall,
 }) => {
   const handleShare = async () => {
     if (navigator.share) {
@@ -113,6 +115,19 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Eye className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
+
+            {/* Install / APK download button */}
+            {onOpenInstall && (
+              <button
+                onClick={onOpenInstall}
+                className="px-2.5 py-1.5 rounded-lg bg-pink-500 hover:bg-pink-400 text-white font-bold text-xs transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white flex items-center gap-1.5 shadow-sm"
+                title="Installeer app op je telefoon (APK / Web App)"
+                aria-label="App installeren"
+              >
+                <Download className="w-4 h-4" />
+                <span className="hidden md:inline">Installeer</span>
+              </button>
+            )}
 
             {/* Share */}
             <button

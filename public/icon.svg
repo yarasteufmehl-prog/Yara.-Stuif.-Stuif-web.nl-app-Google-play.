@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="pwa-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#581c87"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="url(#pwa-grad)"/>
+  <circle cx="256" cy="256" r="180" fill="white" fill-opacity="0.12" stroke="white" stroke-width="4" stroke-dasharray="12 12"/>
+  <text x="256" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="140" font-weight="900" fill="white" text-anchor="middle" letter-spacing="-4">YS</text>
+  <text x="256" y="375" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="700" fill="#fbcfe8" text-anchor="middle" letter-spacing="2">STUIFWEB</text>
+  <circle cx="370" cy="140" r="14" fill="#fb7185"/>
+  <circle cx="140" cy="370" r="10" fill="#c084fc"/>
+</svg>

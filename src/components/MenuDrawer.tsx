@@ -13,7 +13,8 @@ import {
   HelpCircle,
   Sparkles,
   Radio,
-  Award
+  Award,
+  Download
 } from 'lucide-react';
 import { SubView } from '../types';
 
@@ -22,6 +23,7 @@ interface MenuDrawerProps {
   onClose: () => void;
   onSelectOption: (option: SubView) => void;
   currentSubView: SubView;
+  onOpenInstall?: () => void;
 }
 
 export const MenuDrawer: React.FC<MenuDrawerProps> = ({
@@ -29,6 +31,7 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({
   onClose,
   onSelectOption,
   currentSubView,
+  onOpenInstall,
 }) => {
   if (!isOpen) return null;
 
@@ -185,6 +188,33 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({
 
           {/* Stuifweb Official Website Banner & Socials */}
           <div className="mt-4 pt-4 border-t border-purple-800/80 space-y-3">
+            {/* Install App on Phone (APK / PWA) */}
+            {onOpenInstall && (
+              <button
+                onClick={() => {
+                  onClose();
+                  onOpenInstall();
+                }}
+                className="w-full p-3.5 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white border border-pink-400/50 flex items-center justify-between shadow-lg shadow-pink-600/20 group transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                    <Download className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-xs font-bold text-white flex items-center gap-1.5">
+                      <span>App Downloaden / Installeren</span>
+                      <span className="text-[10px] px-2 py-0.2 rounded-full bg-white/20 font-semibold">APK & Web</span>
+                    </p>
+                    <p className="text-[11px] text-pink-100">
+                      Plaats de app direct op je Android startscherm
+                    </p>
+                  </div>
+                </div>
+                <ChevronRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />
+              </button>
+            )}
+
             <div className="p-3.5 rounded-2xl bg-gradient-to-r from-pink-600/20 via-purple-600/20 to-fuchsia-600/20 border border-pink-500/30 flex items-center justify-between">
               <div>
                 <p className="text-xs font-bold text-pink-200 flex items-center gap-1.5">

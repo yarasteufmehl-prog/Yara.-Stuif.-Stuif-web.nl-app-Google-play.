@@ -1,0 +1,23 @@
+{
+  "entities": {
+    "UserFavorite": {
+      "title": "UserFavorite",
+      "description": "User saved favorite video, music track, or blog post",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "itemId": { "type": "string", "description": "ID of the video, blog, or track" },
+        "itemType": { "type": "string", "enum": ["video", "blog", "track", "podcast"] },
+        "title": { "type": "string", "maxLength": 300 },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "itemId", "itemType", "title", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/favorites/{favoriteId}": {
+      "schema": { "$ref": "#/entities/UserFavorite" },
+      "description": "User's saved favorites list"
+    }
+  }
+}

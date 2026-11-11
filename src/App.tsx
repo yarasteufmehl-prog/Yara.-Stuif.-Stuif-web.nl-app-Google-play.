@@ -23,6 +23,8 @@ import { MusicView } from './components/MusicView';
 import { AboutView } from './components/AboutView';
 import { GalleryView } from './components/GalleryView';
 import { TechView } from './components/TechView';
+import { PWAInstallModal } from './components/PWAInstallModal';
+import './firebase';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<NavTab>('home');
@@ -53,7 +55,8 @@ export default function App() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Tab Selection
+  // Install Modal State
+  const [isInstallModalOpen, setIsInstallModalOpen] = useState(false);
   const handleSelectTab = (tab: NavTab) => {
     if (tab === 'menu') {
       setIsMenuOpen(!isMenuOpen);
@@ -188,6 +191,7 @@ export default function App() {
         onChangeFontSize={handleChangeFontSize}
         searchOpen={searchOpen}
         onToggleSearch={() => setSearchOpen(!searchOpen)}
+        onOpenInstall={() => setIsInstallModalOpen(true)}
       />
 
       {/* Global Quick Search Dropdown Bar */}
@@ -292,6 +296,13 @@ export default function App() {
         onClose={() => setIsMenuOpen(false)}
         onSelectOption={handleSelectSubView}
         currentSubView={activeSubView}
+        onOpenInstall={() => setIsInstallModalOpen(true)}
+      />
+
+      {/* PWA Install Modal / APK Alternative */}
+      <PWAInstallModal
+        isOpen={isInstallModalOpen}
+        onClose={() => setIsInstallModalOpen(false)}
       />
 
       {/* Floating Audio Player Dock (when playing track or podcast) */}
